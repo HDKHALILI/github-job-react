@@ -12,3 +12,53 @@
   --gray-light: #f4f6f8;
   --gray-dark: #6e8098;
 }
+
+/*-------------------
+  Global
+---------------------------------*/
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--gray-light);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn {
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+  padding: 1.6rem 3.65rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-violet {
+  background-color: var(--violet);
+  color: var(--white);
+  transition: all 0.4s;
+}
+
+.btn-violet:hover {
+  background-color: var(--violet-light);
+}
+
+@import "./App.css";
+@import "./Header.css";
+@import "./Search.css";

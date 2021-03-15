@@ -1,23 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Header";
+import Search from "./Search";
+import Jobs from "./Jobs";
+
+const jobs = [
+  {
+    id: 1,
+    type: "Full Time",
+    url: "../assets/public-health-institute.jpg",
+    create_at: "2 days ago",
+    company: "Public Health Institute",
+    location: "Los Angeles, San Fransico, Remote, Mountain View",
+    title: "Senior Software Engineer",
+  },
+  {
+    id: 1,
+    type: "Full Time",
+    url: "../assets/public-health-institute.jpg",
+    create_at: "2 days ago",
+    company: "Public Health Institute",
+    location: "Los Angeles, San Fransico, Remote, Mountain View",
+    title: "Senior Software Engineer",
+  },
+  {
+    id: 1,
+    type: "Full Time",
+    url: "../assets/public-health-institute.jpg",
+    create_at: "2 days ago",
+    company: "Public Health Institute",
+    location: "Los Angeles, San Fransico, Remote, Mountain View",
+    title: "Senior Software Engineer",
+  },
+  {
+    id: 1,
+    type: "Full Time",
+    url: "../assets/public-health-institute.jpg",
+    create_at: "2 days ago",
+    company: "Public Health Institute",
+    location: "Los Angeles, San Fransico, Remote, Mountain View",
+    title: "Senior Software Engineer",
+  },
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Search />
+      <main className="container main">
+        <Jobs jobs={jobs} />
+      </main>
     </div>
   );
 }
