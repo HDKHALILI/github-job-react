@@ -1,8 +1,13 @@
+import React from "react";
 import logo from "../assets/desktop/logo.svg";
 import iconMoon from "../assets/desktop/icon-moon.svg";
 import iconSun from "../assets/desktop/icon-sun.svg";
 
-function Header() {
+function Header({ setTheme }) {
+  function handleTheme(event) {
+    console.log(event.target.value);
+    setTheme(event.target.value);
+  }
   return (
     <header>
       <div className="container">
@@ -13,8 +18,21 @@ function Header() {
               <img src={iconSun} />
             </label>
 
-            <input type="radio" name="theme" value="dark" id="dark" />
-            <input type="radio" name="theme" value="light" id="light" />
+            <input
+              type="radio"
+              name="theme"
+              value="light"
+              id="light"
+              defaultChecked
+              onChange={handleTheme}
+            />
+            <input
+              type="radio"
+              name="theme"
+              value="dark"
+              id="dark"
+              onChange={handleTheme}
+            />
             <div className="toggle-pill"></div>
 
             <label htmlFor="dark" className="toggle-label">

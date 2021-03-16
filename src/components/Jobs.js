@@ -1,10 +1,10 @@
 import Job from "./Job";
 
-function Jobs({ jobs }) {
+function Jobs({ jobs, theme }) {
   return (
-    <div>
+    <div className="jobs-container">
       {jobs.map(job => (
-        <Job job={job} key={job.id} />
+        <Job job={job} key={job.id} theme={theme} />
       ))}
     </div>
   );

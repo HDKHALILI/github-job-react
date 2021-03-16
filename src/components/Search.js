@@ -2,11 +2,12 @@ import iconSearch from "../assets/desktop/icon-search.svg";
 import iconLocation from "../assets/desktop/icon-location.svg";
 import iconFilter from "../assets/mobile/icon-filter.svg";
 
-function Search() {
+function Search({ theme }) {
   const titleSearchPlaceholder = "Filter by title, companies, experties...";
+  const formClassName = theme === "dark" ? `search dark-blue` : "search";
   return (
     <div className="container">
-      <form className="search">
+      <form className={formClassName}>
         <div className="title-input-container">
           <img src={iconSearch} className="search-icon" />
           <input
