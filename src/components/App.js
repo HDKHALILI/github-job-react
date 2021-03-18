@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
-import Search from "./Search";
-import Jobs from "./Jobs";
+import Home from "./Home";
+import JobDetalis from "./JobDetails";
 import companyLogo from "../assets/public-health-institute.jpg";
 
 const jobs = [
@@ -46,18 +46,26 @@ const jobs = [
 function App() {
   const [theme, setTheme] = React.useState("light");
 
-  document.body.className = theme;
+  React.useEffect(() => {
+    document.title = "Github Jobs";
+    document.body.className = theme;
+  }, [theme]);
 
   return (
     <div className="App">
       <Header setTheme={setTheme} />
-      <Search theme={theme} />
+      {/* <Search theme={theme} />
       <div className="container">
         <main className="main">
           <Jobs jobs={jobs} theme={theme} />
           <button className="btn btn-violet btn-lg">Load More</button>
         </main>
-      </div>
+      </div> */}
+
+      <main className="main">
+        {/* <Home theme={theme} jobs={jobs} /> */}
+        <JobDetalis />
+      </main>
     </div>
   );
 }

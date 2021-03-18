@@ -84,6 +84,8 @@ body {
 
 @import "./App.css";
 @import "./Header.css";
+@import "./Home.css";
 @import "./Search.css";
 @import "./Jobs.css";
 @import "./Job.css";
+@import "./JobDetails.css";

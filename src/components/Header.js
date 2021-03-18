@@ -12,10 +12,10 @@ function Header({ setTheme }) {
     <header>
       <div className="container">
         <div className="header-content">
-          <img src={logo} />
+          <img src={logo} alt="githubt jobs" />
           <div className="theme-toggle-container">
             <label htmlFor="light" className="toggle-label sun">
-              <img src={iconSun} />
+              <img src={iconSun} alt="sun" />
             </label>
 
             <input
@@ -36,7 +36,7 @@ function Header({ setTheme }) {
             <div className="toggle-pill"></div>
 
             <label htmlFor="dark" className="toggle-label">
-              <img src={iconMoon} />
+              <img src={iconMoon} alt="moon" />
             </label>
 
             <span className="theme-toggle"></span>

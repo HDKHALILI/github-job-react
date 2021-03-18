@@ -1,0 +1,100 @@
+.job-details {
+  max-width: 73rem;
+}
+.company-info {
+  display: flex;
+  background-color: var(--white);
+  border-radius: 0.6rem;
+  height: 14rem;
+  margin: 0 auto;
+}
+
+.logo-container {
+  width: 14rem;
+  height: 14rem;
+}
+
+.logo-container img {
+  border-top-right-radius: 0.6rem;
+  border-top-left-radius: 0.6rem;
+}
+
+.name-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 3rem;
+}
+
+.name-link h3 {
+  color: var(--blue-very-dark);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.name-link p {
+  color: var(--gray-dark);
+}
+
+
+.btn-washed {
+  background-color: rgba(89, 100, 224, 0.1);
+  color: var(--violet);
+  transition: all 0.4s;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.4rem 2.5rem;
+}
+
+.btn-washed:hover {
+  background-color: rgba(89, 100, 224, 0.35);
+}
+
+.btn-link {
+  text-decoration: none;
+}
+
+.job {
+  margin: 2.5rem auto 5rem;
+  padding: 3rem;
+  background-color: var(--white);
+}
+
+.job-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.job-description  {
+  margin-top: 4rem;
+}
+
+/* How to Apply */
+.how-to-apply {
+  background-image: url(../assets/desktop/bg-pattern-detail-footer.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  color: var(--white);
+  border-radius: 0.6rem;
+  margin: 0 auto 5rem;
+  padding: 3rem;
+}
+
+.job-description p {
+  margin: 1rem 0;
+}
+
+.footer {
+  background-color: var(--white);
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.footer .name-link {
+  max-width: 73rem;
+  margin: 0 auto;
+  padding: 0;
+}
