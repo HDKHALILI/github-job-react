@@ -70,15 +70,19 @@ body {
   margin-bottom: 2.6rem;
 }
 
-.light {
+.body-bg-light {
   background-color: var(--gray-light);
 }
 
-.dark {
+.body-bg-dark {
   background-color: var(--midnight);
 }
 
-.dark-blue {
+.bg-light {
+  background-color: var(--white);
+}
+
+.bg-dark {
   background-color: var(--blue-very-dark);
 }
 

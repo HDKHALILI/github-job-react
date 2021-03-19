@@ -1,4 +1,6 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
+
 import Header from "./Header";
 import Home from "./Home";
 import JobDetalis from "./JobDetails";
@@ -48,23 +50,25 @@ function App() {
 
   React.useEffect(() => {
     document.title = "Github Jobs";
-    document.body.className = theme;
+    document.body.className = `body-bg-${theme}`;
   }, [theme]);
 
   return (
     <div className="App">
       <Header setTheme={setTheme} />
-      {/* <Search theme={theme} />
-      <div className="container">
-        <main className="main">
-          <Jobs jobs={jobs} theme={theme} />
-          <button className="btn btn-violet btn-lg">Load More</button>
-        </main>
-      </div> */}
-
       <main className="main">
-        {/* <Home theme={theme} jobs={jobs} /> */}
-        <JobDetalis />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => <Home {...props} jobs={jobs} theme={theme} />}
+          />
+          <Route
+            path="/job-details"
+            exact
+            render={() => <JobDetalis theme={theme} />}
+          />
+        </Switch>
       </main>
     </div>
   );

@@ -1,10 +1,9 @@
+import { Link } from "react-router-dom";
+
 function Job({ job, theme }) {
   const { type, url, create_at, company, location, title } = job;
-  const darkTheme = theme === "dark" ? "dark-blue" : "";
-  const containerClassName = `job-container ${darkTheme}`;
-  const whiteColor = theme === "dark" ? "white" : "";
   return (
-    <div className={containerClassName}>
+    <div className={`job-container bg-${theme}`}>
       <div className="company-logo-container">
         <img src={url} alt={company} className="company-logo" />
       </div>
@@ -13,7 +12,9 @@ function Job({ job, theme }) {
         <span className="dot-divider"></span>
         <p>{type}</p>
       </div>
-      <h2 className={whiteColor}>{title}</h2>
+      <Link to="/job-details">
+        <h2>{title}</h2>
+      </Link>
       <p className="text-gray mb-lg">{company}</p>
       <p className="text-violet">{location}</p>
     </div>

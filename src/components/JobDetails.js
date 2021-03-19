@@ -1,11 +1,11 @@
 import ReactMarkdown from "react-markdown";
 
-function JobDetails() {
+function JobDetails({ theme }) {
   return (
     <>
       <div className="container">
         <div className="job-details">
-          <div className="company-info">
+          <div className={`company-info bg-${theme}`}>
             <div className="logo-container"></div>
             <div className="name-link">
               <div>
@@ -17,7 +17,7 @@ function JobDetails() {
               </a>
             </div>
           </div>
-          <div className="job">
+          <div className={`job bg-${theme}`}>
             <div className="job-summary">
               <div>
                 <div className="time-type-container text-gray mb-md">
@@ -41,14 +41,14 @@ function JobDetails() {
           </div>
         </div>
       </div>
-      <footer className="footer">
+      <footer className={`footer bg-${theme}`}>
         <div className="container">
           <div className="name-link">
             <div>
               <h3>Company Name</h3>
               <p>company url</p>
             </div>
-            <a href="example.com" className="btn-link btn-washed">
+            <a href="example.com" className="btn btn-link btn-violet">
               Company Site
             </a>
           </div>

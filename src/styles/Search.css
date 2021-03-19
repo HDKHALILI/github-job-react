@@ -65,7 +65,7 @@
   align-items: center;
 }
 
-.dark-blue .checkbox-container {
+.bg-dark .checkbox-container {
   color: var(--white);
 }
 /* Checkbox */
@@ -85,7 +85,7 @@
   transition: all 0.2s;
 }
 
-.dark-blue .checkbox {
+.bg-dark .checkbox {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -107,7 +107,7 @@
   cursor: pointer;
 }
 
-.dark-blue input {
+.bg-dark input {
   background-color: var(--blue-very-dark);
   color: var(--white);
 }

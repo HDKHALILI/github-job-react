@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import logo from "../assets/desktop/logo.svg";
 import iconMoon from "../assets/desktop/icon-moon.svg";
 import iconSun from "../assets/desktop/icon-sun.svg";
@@ -12,7 +14,9 @@ function Header({ setTheme }) {
     <header>
       <div className="container">
         <div className="header-content">
-          <img src={logo} alt="githubt jobs" />
+          <Link to="/">
+            <img src={logo} alt="githubt jobs" />
+          </Link>
           <div className="theme-toggle-container">
             <label htmlFor="light" className="toggle-label sun">
               <img src={iconSun} alt="sun" />

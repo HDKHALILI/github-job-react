@@ -1,5 +1,6 @@
 .job-details {
   max-width: 73rem;
+  /* margin: 0 auto; */
 }
 .company-info {
   display: flex;
@@ -34,8 +35,25 @@
   margin-bottom: 1rem;
 }
 
+.bg-dark h3 {
+  color: var(--white);
+}
+
+.bg-dark .btn-washed {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+.bg-dark .btn-washed:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
 .name-link p {
   color: var(--gray-dark);
+}
+
+.bg-dark .job-description {
+  color:  var(--gray);
 }
 
 
