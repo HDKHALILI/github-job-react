@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
+import brokenImage from "../assets/broken-image.png";
 
-function Job({ job, theme }) {
-  const { type, url, create_at, company, location, title } = job;
+function Job({ job, theme, jobHandler }) {
+  const { type, company_logo, create_at, company, location, title } = job;
+  function handleJob() {
+    jobHandler(job);
+  }
   return (
     <div className={`job-container bg-${theme}`}>
       <div className="company-logo-container">
-        <img src={url} alt={company} className="company-logo" />
+        {company_logo ? (
+          <img src={company_logo} alt={company} className="company-logo" />
+        ) : (
+          <img src={brokenImage} alt="question mark" className="company-logo" />
+        )}
       </div>
       <div className="time-type-container text-gray mb-md">
         <p>{create_at}</p>
@@ -13,7 +21,7 @@ function Job({ job, theme }) {
         <p>{type}</p>
       </div>
       <Link to="/job-details">
-        <h2>{title}</h2>
+        <h2 onClick={handleJob}>{title}</h2>
       </Link>
       <p className="text-gray mb-lg">{company}</p>
       <p className="text-violet">{location}</p>

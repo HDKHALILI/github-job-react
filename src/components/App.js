@@ -6,52 +6,66 @@ import Home from "./Home";
 import JobDetalis from "./JobDetails";
 import companyLogo from "../assets/public-health-institute.jpg";
 
-const jobs = [
-  {
-    id: 1,
-    type: "Full Time",
-    url: companyLogo,
-    create_at: "2d ago",
-    company: "Public Health Institute",
-    location: "Los Angeles, San Fransico, Remote, Mountain View",
-    title: "Senior Software Engineer",
-  },
-  {
-    id: 1,
-    type: "Full Time",
-    url: companyLogo,
-    create_at: "2d ago",
-    company: "Public Health Institute",
-    location: "Los Angeles, San Fransico, Remote, Mountain View",
-    title: "Senior Software Engineer",
-  },
-  {
-    id: 1,
-    type: "Full Time",
-    url: companyLogo,
-    create_at: "2d ago",
-    company: "Public Health Institute",
-    location: "Los Angeles, San Fransico, Remote, Mountain View",
-    title: "Senior Software Engineer",
-  },
-  {
-    id: 1,
-    type: "Full Time",
-    url: companyLogo,
-    create_at: "2d ago",
-    company: "Public Health Institute",
-    location: "Los Angeles, San Fransico, Remote, Mountain View",
-    title: "Senior Software Engineer",
-  },
-];
+// const jobs = [
+//   {
+//     id: 1,
+//     type: "Full Time",
+//     url: companyLogo,
+//     create_at: "2d ago",
+//     company: "Public Health Institute",
+//     location: "Los Angeles, San Fransico, Remote, Mountain View",
+//     title: "Senior Software Engineer",
+//   },
+//   {
+//     id: 1,
+//     type: "Full Time",
+//     url: companyLogo,
+//     create_at: "2d ago",
+//     company: "Public Health Institute",
+//     location: "Los Angeles, San Fransico, Remote, Mountain View",
+//     title: "Senior Software Engineer",
+//   },
+//   {
+//     id: 1,
+//     type: "Full Time",
+//     url: companyLogo,
+//     create_at: "2d ago",
+//     company: "Public Health Institute",
+//     location: "Los Angeles, San Fransico, Remote, Mountain View",
+//     title: "Senior Software Engineer",
+//   },
+//   {
+//     id: 1,
+//     type: "Full Time",
+//     url: companyLogo,
+//     create_at: "2d ago",
+//     company: "Public Health Institute",
+//     location: "Los Angeles, San Fransico, Remote, Mountain View",
+//     title: "Senior Software Engineer",
+//   },
+// ];
 
 function App() {
   const [theme, setTheme] = React.useState("light");
+  const [jobs, setJobs] = React.useState([]);
+  const [job, setJob] = React.useState({});
+  const [pageNumber, setPageNumber] = React.useState(1);
+
+  function handlePageNumber() {
+    setPageNumber(pageNumber + 1);
+  }
 
   React.useEffect(() => {
     document.title = "Github Jobs";
     document.body.className = `body-bg-${theme}`;
-  }, [theme]);
+    fetch(
+      `https://cors.bridged.cc/https://jobs.github.com/positions.json?markdown=true&page=${pageNumber}`
+    )
+      .then(res => res.json())
+      .then(data => {
+        setJobs([...jobs, ...data]);
+      });
+  }, [theme, pageNumber]);
 
   return (
     <div className="App">
@@ -61,12 +75,20 @@ function App() {
           <Route
             exact
             path="/"
-            render={props => <Home {...props} jobs={jobs} theme={theme} />}
+            render={props => (
+              <Home
+                {...props}
+                jobs={jobs}
+                theme={theme}
+                jobHandler={setJob}
+                handlePageNumber={handlePageNumber}
+              />
+            )}
           />
           <Route
             path="/job-details"
             exact
-            render={() => <JobDetalis theme={theme} />}
+            render={() => <JobDetalis theme={theme} job={job} />}
           />
         </Switch>
       </main>
