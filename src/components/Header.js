@@ -7,7 +7,6 @@ import iconSun from "../assets/desktop/icon-sun.svg";
 
 function Header({ setTheme }) {
   function handleTheme(event) {
-    console.log(event.target.value);
     setTheme(event.target.value);
   }
   return (

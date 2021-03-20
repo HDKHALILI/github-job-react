@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import { formatDistanceStrict } from "date-fns";
 
 function JobDetails({ theme, job }) {
   const {
@@ -12,6 +13,10 @@ function JobDetails({ theme, job }) {
     type,
     company_url,
   } = job;
+
+  const timeFromNow = formatDistanceStrict(new Date(created_at), new Date(), {
+    addSuffix: true,
+  });
   return (
     <>
       <div className="container">
@@ -38,7 +43,7 @@ function JobDetails({ theme, job }) {
             <div className="job-summary">
               <div>
                 <div className="time-type-container text-gray mb-md">
-                  <p>1w ago</p>
+                  <p>{timeFromNow}</p>
                   <span className="dot-divider"></span>
                   <p>{type}</p>
                 </div>
@@ -66,7 +71,7 @@ function JobDetails({ theme, job }) {
               <h3>{company}</h3>
               <p>{company_url}</p>
             </div>
-            <a href="example.com" className="btn btn-link btn-violet">
+            <a href={company_url} className="btn btn-link btn-violet">
               Company Site
             </a>
           </div>

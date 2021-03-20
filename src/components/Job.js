@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { formatDistance, formatDistanceStrict } from "date-fns";
+import { formatDistanceStrict } from "date-fns";
 
 import brokenImage from "../assets/broken-image.png";
 
@@ -10,11 +10,9 @@ function Job({ job, theme, jobHandler }) {
   }
 
   const timeFromNow = formatDistanceStrict(new Date(created_at), new Date(), {
-    addSuffix: false,
+    addSuffix: true,
   });
-  // const timeFromNow = formatDistance(new Date(created_at), new Date(), {
-  //   addSuffix: false,
-  // });
+
   return (
     <div className={`job-container bg-${theme}`}>
       <div className="company-logo-container">

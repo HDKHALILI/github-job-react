@@ -55,9 +55,10 @@ function App() {
     setPageNumber(pageNumber + 1);
   }
 
+  document.body.className = `body-bg-${theme}`;
+
   React.useEffect(() => {
     document.title = "Github Jobs";
-    document.body.className = `body-bg-${theme}`;
     fetch(
       `https://cors.bridged.cc/https://jobs.github.com/positions.json?markdown=true&page=${pageNumber}`
     )
@@ -65,7 +66,7 @@ function App() {
       .then(data => {
         setJobs([...jobs, ...data]);
       });
-  }, [theme, pageNumber]);
+  }, [pageNumber]);
 
   return (
     <div className="App">
