@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
+import { formatDistance, formatDistanceStrict } from "date-fns";
+
 import brokenImage from "../assets/broken-image.png";
 
 function Job({ job, theme, jobHandler }) {
-  const { type, company_logo, create_at, company, location, title } = job;
+  const { type, company_logo, created_at, company, location, title } = job;
   function handleJob() {
     jobHandler(job);
   }
+
+  const timeFromNow = formatDistanceStrict(new Date(created_at), new Date(), {
+    addSuffix: false,
+  });
+  // const timeFromNow = formatDistance(new Date(created_at), new Date(), {
+  //   addSuffix: false,
+  // });
   return (
     <div className={`job-container bg-${theme}`}>
       <div className="company-logo-container">
@@ -16,7 +25,7 @@ function Job({ job, theme, jobHandler }) {
         )}
       </div>
       <div className="time-type-container text-gray mb-md">
-        <p>{create_at}</p>
+        <p>{timeFromNow} ago</p>
         <span className="dot-divider"></span>
         <p>{type}</p>
       </div>
