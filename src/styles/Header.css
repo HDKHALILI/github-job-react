@@ -67,3 +67,16 @@ header img {
 #dark:checked ~ .theme-toggle {
   left: 7.45rem;
 }
+
+
+@media screen and (max-width: 768px) {
+  header {
+    background-image: url(../assets/tablet/bg-pattern-header.svg);
+  }
+}
+
+@media screen and (max-width: 375px) {
+  header {
+    background-image: url(../assets/mobile/bg-pattern-header.svg);
+  }
+}

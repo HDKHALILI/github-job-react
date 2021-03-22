@@ -108,11 +108,22 @@ ul li {
   margin: 1rem 0;
 }
 
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+code {
+  line-height: 1.6;
+}
 /* How to Apply */
 .how-to-apply {
   background-image: url(../assets/desktop/bg-pattern-detail-footer.svg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 
   color: var(--white);
   border-radius: 0.6rem;
@@ -135,4 +146,54 @@ ul li {
   max-width: 73rem;
   margin: 0 auto;
   padding: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .company-info,
+  .job-summary ,
+  .name-link {
+    flex-direction: column;
+  }
+
+  .company-info,
+  .name-link {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-container {
+    width: 5rem;
+    height: 5rem;
+    margin-top: -2.5rem;
+    border-radius: 1.5rem;
+    background-color: var(--white);
+  }
+
+  .logo-container img {
+    border-radius: 1.5rem;
+    width: 100%;
+  }
+
+  .name-link {
+    margin: 1rem 0;
+  }
+
+  .name-link > * {
+    margin-bottom: 2.2rem;
+  }
+
+  .job-summary {
+    align-items: stretch;
+  }
+
+  .job-summary > div {
+    margin-bottom: 3rem;
+  }
+
+}
+
+@media screen and (max-width: 375px) {
+  .how-to-apply {
+    background-image: url(../assets/mobile/bg-pattern-detail-footer.svg);
+  }
 }

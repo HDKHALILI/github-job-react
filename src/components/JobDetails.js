@@ -50,7 +50,7 @@ function JobDetails({ theme, job }) {
                 <h2>{title}</h2>
                 <p className="text-violet">{location}</p>
               </div>
-              <a href="#" className="btn btn-violet btn-link">
+              <a href="#apply" className="btn btn-violet btn-link">
                 Apply now
               </a>
             </div>
@@ -58,7 +58,7 @@ function JobDetails({ theme, job }) {
               <ReactMarkdown children={description} />
             </div>
           </div>
-          <div className="how-to-apply">
+          <div className="how-to-apply" id="apply">
             <h3>How to Apply</h3>
             <ReactMarkdown children={how_to_apply} className="apply-details" />
           </div>

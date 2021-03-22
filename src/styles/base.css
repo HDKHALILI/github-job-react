@@ -18,6 +18,8 @@
 ---------------------------------*/
 html {
   font-size: 62.5%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: "Kumbh Sans", sans-serif;
 }
@@ -29,6 +31,8 @@ body {
 *,
 *::before,
 *::after {
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
   box-sizing: inherit;
   margin: 0;
   padding: 0;
@@ -46,6 +50,7 @@ body {
   padding: 1.6rem 3.65rem;
   border: none;
   cursor: pointer;
+  text-align: center;
 }
 
 .btn-violet {

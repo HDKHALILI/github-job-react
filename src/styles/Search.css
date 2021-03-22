@@ -37,8 +37,10 @@
 .location-input {
   font-size: 1.6rem;
   padding: 0.5rem;
+  padding-left: 0.8rem;
   border: none;
-  width: 100%;
+  max-width: 100%;
+  width: 90%;
 }
 
 .title-input:focus,
@@ -48,7 +50,7 @@
 }
 
 .location-input {
-  max-width: 90%;
+  /* max-width: 90%; */
 }
 
 .filter-icon {
@@ -57,7 +59,11 @@
 
 .search-icon,
 .location-icon {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+}
+
+.search-icon {
+  fill: var(--violet);
 }
 
 .checkbox-container {
@@ -67,6 +73,10 @@
 
 .bg-dark .checkbox-container {
   color: var(--white);
+}
+
+.icon-btn {
+  display: none;
 }
 /* Checkbox */
 .checkbox {
@@ -135,16 +145,98 @@
 
 @media screen and (max-width: 768px) {
   .search .btn {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 1.5rem;
   }
 
-  .title-input-container,
+  .location-input-container,
   .action-container {
     width: 35%;
   }
   
-  .location-input-container {
+  .title-input-container {
     width: 30%;
   }
 
+  .title-input {
+    width: 85%;
+  }
+
+}
+
+@media screen and (max-width: 650px) {
+  .search {
+    padding: 0 0.5rem;
+  }
+  .location-input-container,
+  .action-container,
+  .search-icon {
+    display: none;
+  }
+
+  .title-input-container {
+    border: none;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .title-input {
+    max-width: 60%;
+    width: 100%;
+    padding-left: 0.3rem;
+  }
+
+  .btn-filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 20%;
+  }
+
+  .filter-icon {
+    display: block;
+    fill: var(--gray-dark);
+    margin: 0 2rem 0 1rem;
+    transition: fill 0.4s;
+  }
+
+  .bg-dark .filter-icon {
+    fill: var(--white);
+  }
+
+  .filter-icon:hover {
+    fill: rgba(110, 128, 152, 0.6);
+  }
+
+  .filter-icon,
+  .icon-btn {
+    cursor: pointer;
+  }
+
+  .icon-btn {
+    background-color: var(--violet);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.4s;
+  }
+
+  .icon-btn:hover {
+    background-color: var(--violet-light);
+  }
+
+  .btn-icon-search {
+    fill: var(--white);
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .search {
+    padding: 0;
+  }
+  .filter-icon {
+    margin: 0 1rem;
+  }
 }
