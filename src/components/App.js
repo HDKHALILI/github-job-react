@@ -116,7 +116,7 @@ function App() {
         setStatus("resolved");
         setError(e.message);
       });
-  }, [page, queries]);
+  }, [page, queries, prevPage]);
 
   return (
     <div className="App">
