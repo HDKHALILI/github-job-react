@@ -37,6 +37,7 @@ function App() {
   function handleSubmit(data) {
     setPage(1);
     setJobs([]);
+    setLastPage(false);
     setQueries(data);
   }
 
