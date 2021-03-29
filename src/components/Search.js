@@ -30,40 +30,122 @@ function getTitleSearchPlaceholder(windowWidth) {
   return "Filter by title, companies, experties...";
 }
 
-function Search({ theme }) {
+function FilterModal({ theme, visiblity, locationHandler, fulltimeHandler }) {
+  return (
+    <div className={`modal ${visiblity}`}>
+      <div className={`modal-content bg-${theme}`}>
+        <div className="text-input-container">
+          <img src={iconLocation} className="location-icon" alt="location" />
+          <input
+            type="text"
+            className="location-input"
+            placeholder="Filter by location..."
+            onChange={locationHandler}
+          />
+        </div>
+        <div className="modal-checkbox-container">
+          <input
+            type="checkbox"
+            id="full-time-only"
+            className="checkbox"
+            onChange={fulltimeHandler}
+          />
+          <label htmlFor="full-time-only">Full Time Only</label>
+        </div>
+        <button type="submit" className="btn btn-violet">
+          Search
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function Search({ theme, handleSubmit }) {
+  const [modalStatus, setModalStatus] = useState("hide");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [fulltime, setFulltime] = useState(false);
   const windowWidth = useWindowWidth();
   const titleSearchPlaceholder = getTitleSearchPlaceholder(windowWidth);
   const checkboxLabel = windowWidth <= 768 ? "Full Time" : "Full Time Only";
+
+  function handleModalStatus() {
+    setModalStatus("show");
+  }
+
+  function descriptionHandler({ target }) {
+    setDescription(target.value);
+  }
+
+  function locationHandler({ target }) {
+    setLocation(target.value);
+  }
+
+  function fulltimeHandler({ target }) {
+    setFulltime(target.checked);
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    handleSubmit({
+      description,
+      location,
+      fulltime,
+    });
+
+    setDescription("");
+    setLocation("");
+    setFulltime(false);
+    setModalStatus("hide");
+  }
+
   return (
-    <form className={`search bg-${theme}`}>
+    <form className={`search bg-${theme}`} onSubmit={submitHandler}>
       <div className="title-input-container">
-        {/* <img src={iconSearch} className="search-icon" alt="search" /> */}
         <IconSearch className="search-icon" />
         <input
           type="text"
           className="title-input"
+          value={description}
+          onChange={descriptionHandler}
           placeholder={titleSearchPlaceholder}
         />
         <div className="btn-filter-container">
-          <IconFilter className="filter-icon" />
+          <IconFilter className="filter-icon" onClick={handleModalStatus} />
           <button type="submit" className="icon-btn">
             <IconSearch className="btn-icon-search" />
           </button>
         </div>
       </div>
 
+      <FilterModal
+        theme={theme}
+        visiblity={modalStatus}
+        locationHandler={locationHandler}
+        fulltimeHandler={fulltimeHandler}
+      />
+
       <div className="location-input-container">
         <img src={iconLocation} className="location-icon" alt="location" />
         <input
           type="text"
           className="location-input"
+          value={location}
+          onChange={locationHandler}
           placeholder="Filter by location..."
         />
       </div>
 
       <div className="action-container">
         <div className="checkbox-container">
-          <input type="checkbox" id="full-time-only" className="checkbox" />
+          <input
+            type="checkbox"
+            id="full-time-only"
+            checked={fulltime}
+            className="checkbox"
+            onChange={fulltimeHandler}
+          />
           <label htmlFor="full-time-only">{checkboxLabel}</label>
         </div>
         <button type="submit" className="btn btn-violet">

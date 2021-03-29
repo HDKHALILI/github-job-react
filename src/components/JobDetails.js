@@ -1,8 +1,25 @@
+import React from "react";
 import ReactMarkdown from "react-markdown";
 import { formatDistanceStrict } from "date-fns";
 
+import brokenImage from "../assets/broken-image.png";
+
+function isUrl(url) {
+  const regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+
+  return regexp.test(url);
+}
+
 function JobDetails({ theme, job }) {
-  const {
+  if (!job) {
+    return (
+      <p className="no-job">
+        No job is selected. Please select a job from home page
+      </p>
+    );
+  }
+
+  let {
     company,
     company_logo,
     created_at,
@@ -14,29 +31,47 @@ function JobDetails({ theme, job }) {
     company_url,
   } = job;
 
+  company_url = isUrl(company_url) ? company_url : "";
+
   const timeFromNow = formatDistanceStrict(new Date(created_at), new Date(), {
     addSuffix: true,
   });
+
   return (
     <>
       <div className="container">
         <div className="job-details">
           <div className={`company-info bg-${theme}`}>
             <div className="logo-container">
-              <img src={company_logo} alt={company} />
+              {company_logo ? (
+                <img
+                  src={company_logo}
+                  alt={company}
+                  className="company-logo"
+                />
+              ) : (
+                <img
+                  src={brokenImage}
+                  alt="question mark"
+                  className="company-logo"
+                />
+              )}
             </div>
             <div className="name-link">
               <div>
                 <h3>{company}</h3>
                 <p>{company_url}</p>
               </div>
-              <a
-                href={company_url}
-                disabled={!company_url}
-                className="btn-link btn-washed"
-              >
-                Company Site
-              </a>
+              {company_url && (
+                <a
+                  href={company_url}
+                  className="btn-link btn-washed"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Company Site
+                </a>
+              )}
             </div>
           </div>
           <div className={`job bg-${theme}`}>
@@ -71,9 +106,6 @@ function JobDetails({ theme, job }) {
               <h3>{company}</h3>
               <p>{company_url}</p>
             </div>
-            <a href={company_url} className="btn btn-link btn-violet">
-              Company Site
-            </a>
           </div>
         </div>
       </footer>
