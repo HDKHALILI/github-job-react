@@ -5,46 +5,6 @@ import Header from "./Header";
 import Home from "./Home";
 import JobDetalis from "./JobDetails";
 import NotFound from "./NotFound";
-// import companyLogo from "../assets/public-health-institute.jpg";
-
-// const jobs = [
-//   {
-//     id: 1,
-//     type: "Full Time",
-//     url: companyLogo,
-//     create_at: "2d ago",
-//     company: "Public Health Institute",
-//     location: "Los Angeles, San Fransico, Remote, Mountain View",
-//     title: "Senior Software Engineer",
-//   },
-//   {
-//     id: 1,
-//     type: "Full Time",
-//     url: companyLogo,
-//     create_at: "2d ago",
-//     company: "Public Health Institute",
-//     location: "Los Angeles, San Fransico, Remote, Mountain View",
-//     title: "Senior Software Engineer",
-//   },
-//   {
-//     id: 1,
-//     type: "Full Time",
-//     url: companyLogo,
-//     create_at: "2d ago",
-//     company: "Public Health Institute",
-//     location: "Los Angeles, San Fransico, Remote, Mountain View",
-//     title: "Senior Software Engineer",
-//   },
-//   {
-//     id: 1,
-//     type: "Full Time",
-//     url: companyLogo,
-//     create_at: "2d ago",
-//     company: "Public Health Institute",
-//     location: "Los Angeles, San Fransico, Remote, Mountain View",
-//     title: "Senior Software Engineer",
-//   },
-// ];
 
 function App() {
   const [theme, setTheme] = React.useState("light");
@@ -75,7 +35,6 @@ function App() {
   }
 
   function handleSubmit(data) {
-    console.log(data);
     setPage(1);
     setJobs([]);
     setQueries(data);
@@ -84,17 +43,14 @@ function App() {
   document.body.className = `body-bg-${theme}`;
   const prevPageRef = React.useRef();
 
-  const prevPage = prevPageRef.current;
   React.useEffect(() => {
     const { description, location, fulltime } = queries;
     const url = `https://cors.bridged.cc/https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fulltime}&markdown=true&page=${page}`;
 
     document.title = "Github Jobs";
+    const prevPage = prevPageRef.current;
     prevPageRef.current = page;
-    console.log("page", page);
-    console.log("prev page", prevPage);
 
-    console.log("getting data");
     setStatus("pending");
     fetch(url)
       .then(res => res.json())
@@ -115,7 +71,7 @@ function App() {
         setStatus("resolved");
         setError(e.message);
       });
-  }, [page, queries, prevPage]);
+  }, [page, queries]);
 
   return (
     <div className="App">
