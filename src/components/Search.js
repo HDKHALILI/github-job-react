@@ -40,6 +40,7 @@ function FilterModal({ theme, visiblity, locationHandler, fulltimeHandler }) {
             type="text"
             className="location-input"
             name="location"
+            aria-label="job title"
             placeholder="Filter by location..."
             onChange={locationHandler}
           />
@@ -111,6 +112,7 @@ function Search({ theme, handleSubmit }) {
           className="title-input"
           value={description}
           name="title"
+          aria-label="job title"
           onChange={descriptionHandler}
           placeholder={titleSearchPlaceholder}
         />
@@ -141,6 +143,7 @@ function Search({ theme, handleSubmit }) {
           className="location-input"
           value={location}
           name="location"
+          aria-label="location"
           onChange={locationHandler}
           placeholder="Filter by location..."
         />
