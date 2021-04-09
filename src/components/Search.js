@@ -116,7 +116,12 @@ function Search({ theme, handleSubmit }) {
         />
         <div className="btn-filter-container">
           <IconFilter className="filter-icon" onClick={handleModalStatus} />
-          <button type="submit" className="icon-btn">
+          <button
+            type="submit"
+            name="search"
+            aria-label="search"
+            className="icon-btn"
+          >
             <IconSearch className="btn-icon-search" />
           </button>
         </div>
@@ -153,7 +158,7 @@ function Search({ theme, handleSubmit }) {
           />
           <label htmlFor="full-time-only">{checkboxLabel}</label>
         </div>
-        <button type="submit" name="submit" className="btn btn-violet">
+        <button type="submit" name="search" className="btn btn-violet">
           Search
         </button>
       </div>
