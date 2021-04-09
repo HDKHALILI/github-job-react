@@ -39,6 +39,7 @@ function FilterModal({ theme, visiblity, locationHandler, fulltimeHandler }) {
           <input
             type="text"
             className="location-input"
+            name="location"
             placeholder="Filter by location..."
             onChange={locationHandler}
           />
@@ -46,13 +47,14 @@ function FilterModal({ theme, visiblity, locationHandler, fulltimeHandler }) {
         <div className="modal-checkbox-container">
           <input
             type="checkbox"
-            id="full-time-only"
+            id="full-time-only-modal"
             className="checkbox"
+            name="full-time-only"
             onChange={fulltimeHandler}
           />
-          <label htmlFor="full-time-only">Full Time Only</label>
+          <label htmlFor="full-time-only-modal">Full Time Only</label>
         </div>
-        <button type="submit" className="btn btn-violet">
+        <button type="submit" name="submit" className="btn btn-violet">
           Search
         </button>
       </div>
@@ -108,6 +110,7 @@ function Search({ theme, handleSubmit }) {
           type="text"
           className="title-input"
           value={description}
+          name="title"
           onChange={descriptionHandler}
           placeholder={titleSearchPlaceholder}
         />
@@ -132,6 +135,7 @@ function Search({ theme, handleSubmit }) {
           type="text"
           className="location-input"
           value={location}
+          name="location"
           onChange={locationHandler}
           placeholder="Filter by location..."
         />
@@ -144,11 +148,12 @@ function Search({ theme, handleSubmit }) {
             id="full-time-only"
             checked={fulltime}
             className="checkbox"
+            name="full-time-only"
             onChange={fulltimeHandler}
           />
           <label htmlFor="full-time-only">{checkboxLabel}</label>
         </div>
-        <button type="submit" className="btn btn-violet">
+        <button type="submit" name="submit" className="btn btn-violet">
           Search
         </button>
       </div>
