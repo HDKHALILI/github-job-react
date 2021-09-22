@@ -6,6 +6,7 @@ import Home from "./Home";
 import JobDetalis from "./JobDetails";
 import NotFound from "./NotFound";
 import data from "../assets/data.json";
+import { set } from "date-fns";
 
 function App() {
   const [theme, setTheme] = React.useState("light");
@@ -51,6 +52,10 @@ function App() {
     document.title = "Github Jobs";
     const prevPage = prevPageRef.current;
     prevPageRef.current = page;
+
+    setStatus("pending");
+    setJobs(data);
+    setStatus("resolved");
   }, [page, queries]);
 
   return (
