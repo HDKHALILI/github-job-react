@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 
-import brokenImage from "../assets/broken-image.png";
-
 function Job({ job, theme, jobHandler }) {
   const {
     contract,

@@ -1,4 +1,4 @@
-## Github job api is now deprecated, the demo is currently not working. A fix is comming soon!
+## Github job api is now deprecated, the app uses a local json file for the jobs.
 
 # Github Jobs API Challenge
 
