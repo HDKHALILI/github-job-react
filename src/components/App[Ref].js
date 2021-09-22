@@ -5,7 +5,6 @@ import Header from "./Header";
 import Home from "./Home";
 import JobDetalis from "./JobDetails";
 import NotFound from "./NotFound";
-import data from "../assets/data.json";
 
 function App() {
   const [theme, setTheme] = React.useState("light");
@@ -47,10 +46,32 @@ function App() {
 
   React.useEffect(() => {
     const { description, location, fulltime } = queries;
+    const url = `https://cors.bridged.cc/https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fulltime}&markdown=true&page=${page}`;
 
     document.title = "Github Jobs";
     const prevPage = prevPageRef.current;
     prevPageRef.current = page;
+
+    setStatus("pending");
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        if (data.length < 50) {
+          setLastPage(true);
+        }
+        if (page !== prevPage && data.length !== 0) {
+          setStatus("resolved");
+          setJobs(prevJobs => [...prevJobs, ...data]);
+        } else {
+          setStatus("resolved");
+          setJobs(data);
+        }
+      })
+      .catch(e => {
+        console.log(e.message);
+        setStatus("resolved");
+        setError(e.message);
+      });
   }, [page, queries]);
 
   return (
