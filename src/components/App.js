@@ -5,8 +5,7 @@ import Header from "./Header";
 import Home from "./Home";
 import JobDetalis from "./JobDetails";
 import NotFound from "./NotFound";
-import data from "../assets/data.json";
-import { set } from "date-fns";
+import data from "../data.json";
 
 function App() {
   const [theme, setTheme] = React.useState("light");
