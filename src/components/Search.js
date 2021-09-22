@@ -77,7 +77,7 @@ function Search({ theme, handleSubmit }) {
   }
 
   function descriptionHandler({ target }) {
-    setDescription(target.value);
+    setDescription(target.value.toLowerCase());
   }
 
   function locationHandler({ target }) {

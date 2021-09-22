@@ -19,3 +19,7 @@
   color: var(--white);
   border-bottom: 2px solid rgba(255, 255, 255, 0.4);
 }
+
+button:disabled {
+  display: none;
+}

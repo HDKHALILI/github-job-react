@@ -6,6 +6,16 @@
   font-size: 1.6rem;
 }
 
+.jobs-container a {
+  text-decoration: none;
+  margin-top: 0;
+  transition: all 0.3s;
+}
+
+.jobs-container a:hover {
+  margin-top: -0.5rem;
+}
+
 .company-logo-container {
   width: 5rem;
   height: 5rem;
@@ -53,7 +63,6 @@ h2 {
 .text-violet {
   color: var(--violet);
 }
-
 
 .bg-dark h2 {
   color: var(--white);

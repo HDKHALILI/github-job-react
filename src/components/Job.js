@@ -17,24 +17,24 @@ function Job({ job, theme, jobHandler }) {
   }
 
   return (
-    <div className={`job-container bg-${theme}`}>
-      <div
-        className="company-logo-container"
-        style={{ backgroundColor: logoBackground }}
-      >
-        <img src={logo} alt={company} className="company-logo" />
+    <Link to="/job-details">
+      <div className={`job-container bg-${theme}`} onClick={handleJob}>
+        <div
+          className="company-logo-container"
+          style={{ backgroundColor: logoBackground }}
+        >
+          <img src={logo} alt={company} className="company-logo" />
+        </div>
+        <div className="time-type-container text-gray mb-md">
+          <p>{postedAt}</p>
+          <span className="dot-divider"></span>
+          <p>{contract}</p>
+        </div>
+        <h2>{position}</h2>
+        <p className="text-gray mb-lg">{company}</p>
+        <p className="text-violet">{location}</p>
       </div>
-      <div className="time-type-container text-gray mb-md">
-        <p>{postedAt}</p>
-        <span className="dot-divider"></span>
-        <p>{contract}</p>
-      </div>
-      <Link to="/job-details">
-        <h2 onClick={handleJob}>{position}</h2>
-      </Link>
-      <p className="text-gray mb-lg">{company}</p>
-      <p className="text-violet">{location}</p>
-    </div>
+    </Link>
   );
 }
 

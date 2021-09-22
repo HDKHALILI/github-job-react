@@ -9,7 +9,6 @@ function Home({
   handlePage,
   handleSubmit,
   queries,
-  error,
   status,
   lastPage,
 }) {

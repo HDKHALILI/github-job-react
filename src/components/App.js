@@ -5,28 +5,21 @@ import Header from "./Header";
 import Home from "./Home";
 import JobDetalis from "./JobDetails";
 import NotFound from "./NotFound";
-import data from "../data.json";
+import jobsList from "../data.json";
 
 function App() {
   const [theme, setTheme] = React.useState("light");
   const [status, setStatus] = React.useState("idle");
   const [jobs, setJobs] = React.useState([]);
   const [job, setJob] = React.useState(null);
-  const [page, setPage] = React.useState(1);
   const [queries, setQueries] = React.useState(() => ({
     description: "",
     location: "",
     fulltime: false,
   }));
-  const [error, setError] = React.useState(null);
-  const [lastPage, setLastPage] = React.useState(false);
-
-  function handlePage() {
-    setPage(page + 1);
-  }
+  // const [error, setError] = React.useState(null);
 
   function handleHome() {
-    setPage(1);
     setJobs([]);
     setQueries({
       description: "",
@@ -36,26 +29,63 @@ function App() {
   }
 
   function handleSubmit(data) {
-    setPage(1);
     setJobs([]);
-    setLastPage(false);
     setQueries(data);
   }
 
+  function filterOnDescription(description) {
+    return jobsList.filter(job => {
+      return (
+        job.company.toLowerCase().includes(description) ||
+        job.position.toLowerCase().includes(description)
+      );
+    });
+  }
+
+  function filterOnLocation(jobs, location) {
+    return jobs.filter(
+      job => job.location.toLowerCase() === location.toLowerCase()
+    );
+  }
+
+  function filterFulltimeOnly(jobs) {
+    return jobs.filter(job => job.contract.toLowerCase() === "full time");
+  }
+
   document.body.className = `body-bg-${theme}`;
-  const prevPageRef = React.useRef();
 
   React.useEffect(() => {
+    setJobs(jobsList);
+
     const { description, location, fulltime } = queries;
 
-    document.title = "Github Jobs";
-    const prevPage = prevPageRef.current;
-    prevPageRef.current = page;
+    if (description) {
+      let filteredJobs = filterOnDescription(description);
+
+      if (location) {
+        filteredJobs = filterOnLocation(filteredJobs, location);
+      }
+
+      if (fulltime) {
+        filteredJobs = filterFulltimeOnly(filteredJobs);
+      }
+
+      setJobs(filteredJobs);
+    }
+
+    if (location) {
+      setJobs(filterOnLocation(jobsList, location));
+    }
+
+    if (fulltime) {
+      setJobs(filterFulltimeOnly(jobsList));
+    }
+
+    document.title = "Dev Jobs";
 
     setStatus("pending");
-    setJobs(data);
     setStatus("resolved");
-  }, [page, queries]);
+  }, [queries]);
 
   return (
     <div className="App">
@@ -71,11 +101,9 @@ function App() {
                 jobs={jobs}
                 theme={theme}
                 queries={queries}
-                error={error}
                 status={status}
-                lastPage={lastPage}
+                lastPage={true}
                 jobHandler={setJob}
-                handlePage={handlePage}
                 handleSubmit={handleSubmit}
               />
             )}
