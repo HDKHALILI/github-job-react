@@ -56,7 +56,6 @@
   color: var(--gray-dark);
 }
 
-
 .btn-washed {
   background-color: rgba(89, 100, 224, 0.1);
   color: var(--violet);
@@ -86,7 +85,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.job-description  {
+.job-description {
   margin-top: 4rem;
 }
 
@@ -94,17 +93,24 @@
   margin: 1.6rem 0;
 }
 
-.bg-dark .job-description {
-  color:  var(--gray);
+.job-description h2 {
+  margin-top: 4rem;
+  margin-bottom: 1rem;
 }
 
-ul {
+.bg-dark .job-description {
+  color: var(--gray);
+}
+
+ul,
+ol {
   margin-left: 1.5rem;
   /* list-style: none; */
 }
 
-ul li {
-  margin: 1rem 0;
+ul li,
+ol li {
+  margin: 1.5rem 0;
 }
 
 pre {
@@ -160,14 +166,13 @@ code {
   margin-top: 10rem;
 }
 
-
 @media screen and (max-width: 550px) {
   .job {
     padding: 1.6rem;
   }
 
   .company-info,
-  .job-summary ,
+  .job-summary,
   .name-link {
     flex-direction: column;
   }
@@ -210,11 +215,9 @@ code {
   .name-link {
     align-items: stretch;
   }
-
 }
 
 @media screen and (max-width: 375px) {
-
   .footer .name-link {
     text-align: center;
   }

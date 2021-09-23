@@ -1,7 +1,5 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
-
-import brokenImage from "../assets/broken-image.png";
+import { v4 as uuidv4 } from "uuid";
 
 function isUrl(url) {
   const regexp =
@@ -21,46 +19,40 @@ function JobDetails({ theme, job }) {
 
   let {
     company,
-    company_logo,
+    logo,
+    logoBackground,
     postedAt,
     description,
-    how_to_apply,
+    apply,
     location,
     position,
-    type,
-    company_url,
+    contract,
+    website,
+    requirements,
+    role,
   } = job;
 
-  company_url = isUrl(company_url) ? company_url : "";
+  website = isUrl(website) ? website : "";
 
   return (
     <>
       <div className="container">
         <div className="job-details">
           <div className={`company-info bg-${theme}`}>
-            <div className="logo-container">
-              {company_logo ? (
-                <img
-                  src={company_logo}
-                  alt={company}
-                  className="company-logo"
-                />
-              ) : (
-                <img
-                  src={brokenImage}
-                  alt="question mark"
-                  className="company-logo"
-                />
-              )}
+            <div
+              className="logo-container"
+              style={{ backgroundColor: logoBackground }}
+            >
+              <img src={logo} alt={company} className="company-logo" />
             </div>
             <div className="name-link">
               <div>
                 <h3>{company}</h3>
-                <p>{company_url}</p>
+                <p>{website}</p>
               </div>
-              {company_url && (
+              {website && (
                 <a
-                  href={company_url}
+                  href={website}
                   className="btn-link btn-washed"
                   target="_blank"
                   rel="noreferrer"
@@ -76,7 +68,7 @@ function JobDetails({ theme, job }) {
                 <div className="time-type-container text-gray mb-md">
                   <p>{postedAt}</p>
                   <span className="dot-divider"></span>
-                  <p>{type}</p>
+                  <p>{contract}</p>
                 </div>
                 <h2>{position}</h2>
                 <p className="text-violet">{location}</p>
@@ -86,12 +78,24 @@ function JobDetails({ theme, job }) {
               </a>
             </div>
             <div className="job-description">
-              <ReactMarkdown children={description} />
+              <p>{description}</p>
+
+              <h2>Requirements</h2>
+              <p>{requirements.content}</p>
+              <ul>
+                {requirements.items.map(item => (
+                  <li key={uuidv4()}>{item}</li>
+                ))}
+              </ul>
+
+              <h2>Role</h2>
+              <p>{role.content}</p>
+              <ol>
+                {role.items.map(item => (
+                  <li key={uuidv4()}>{item}</li>
+                ))}
+              </ol>
             </div>
-          </div>
-          <div className="how-to-apply" id="apply">
-            <h3>How to Apply</h3>
-            <ReactMarkdown children={how_to_apply} className="apply-details" />
           </div>
         </div>
       </div>
@@ -100,8 +104,11 @@ function JobDetails({ theme, job }) {
           <div className="name-link">
             <div>
               <h3>{company}</h3>
-              <p>{company_url}</p>
+              <p>{website}</p>
             </div>
+            <a href={apply} className="btn btn-violet btn-link">
+              Apply Now
+            </a>
           </div>
         </div>
       </footer>
