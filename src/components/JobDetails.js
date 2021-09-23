@@ -73,7 +73,7 @@ function JobDetails({ theme, job }) {
                 <h2>{position}</h2>
                 <p className="text-violet">{location}</p>
               </div>
-              <a href="#apply" className="btn btn-violet btn-link">
+              <a href={apply} className="btn btn-violet btn-link">
                 Apply now
               </a>
             </div>
