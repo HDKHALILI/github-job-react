@@ -1,5 +1,6 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useParams } from "react-router-dom";
 
 function isUrl(url) {
   const regexp =
@@ -8,7 +9,10 @@ function isUrl(url) {
   return regexp.test(url);
 }
 
-function JobDetails({ theme, job }) {
+function JobDetails({ theme, jobs }) {
+  const { id } = useParams();
+  const job = jobs.find(job => job.id === Number(id));
+
   if (!job) {
     return (
       <p className="no-job">

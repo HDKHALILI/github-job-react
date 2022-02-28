@@ -9,14 +9,15 @@ function Job({ job, theme, jobHandler }) {
     company,
     location,
     position,
+    id,
   } = job;
   function handleJob() {
     jobHandler(job);
   }
 
   return (
-    <Link to="/job-details">
-      <div className={`job-container bg-${theme}`} onClick={handleJob}>
+    <Link to={`/job-details/${id}`}>
+      <div className={`job-container bg-${theme}`}>
         <div
           className="company-logo-container"
           style={{ backgroundColor: logoBackground }}

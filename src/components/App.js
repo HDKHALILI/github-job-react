@@ -108,11 +108,9 @@ function App() {
               />
             )}
           />
-          <Route
-            path="/job-details"
-            exact
-            render={() => <JobDetalis theme={theme} job={job} />}
-          />
+          <Route path="/job-details/:id" exact>
+            <JobDetalis theme={theme} jobs={jobs} />
+          </Route>
           <Route component={NotFound} />
         </Switch>
       </main>
