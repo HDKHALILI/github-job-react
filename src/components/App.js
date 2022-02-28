@@ -11,7 +11,7 @@ function App() {
   const [theme, setTheme] = React.useState("light");
   const [status, setStatus] = React.useState("idle");
   const [jobs, setJobs] = React.useState([]);
-  const [job, setJob] = React.useState(null);
+  // const [job, setJob] = React.useState(null);
   const [queries, setQueries] = React.useState(() => ({
     description: "",
     location: "",
@@ -103,7 +103,7 @@ function App() {
                 queries={queries}
                 status={status}
                 lastPage={true}
-                jobHandler={setJob}
+                // jobHandler={setJob}
                 handleSubmit={handleSubmit}
               />
             )}

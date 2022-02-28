@@ -11,9 +11,6 @@ function Job({ job, theme, jobHandler }) {
     position,
     id,
   } = job;
-  function handleJob() {
-    jobHandler(job);
-  }
 
   return (
     <Link to={`/job-details/${id}`}>
