@@ -97,9 +97,9 @@ function Search({ theme, handleSubmit }) {
       fulltime,
     });
 
-    setDescription("");
-    setLocation("");
-    setFulltime(false);
+    // setDescription("");
+    // setLocation("");
+    // setFulltime(false);
     setModalStatus("hide");
   }
 

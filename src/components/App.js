@@ -55,36 +55,45 @@ function App() {
   document.body.className = `body-bg-${theme}`;
 
   React.useEffect(() => {
-    setJobs(jobsList);
+    setStatus("pending");
+    const jobsDelay = setTimeout(() => {
+      setJobs(jobsList);
+      setStatus("resolved");
+    }, 2000);
 
     const { description, location, fulltime } = queries;
 
-    if (description) {
-      let filteredJobs = filterOnDescription(description);
+    const filterDelay = setTimeout(() => {
+      if (description) {
+        let filteredJobs = filterOnDescription(description);
+
+        if (location) {
+          filteredJobs = filterOnLocation(filteredJobs, location);
+        }
+
+        if (fulltime) {
+          filteredJobs = filterFulltimeOnly(filteredJobs);
+        }
+
+        setJobs(filteredJobs);
+      }
 
       if (location) {
-        filteredJobs = filterOnLocation(filteredJobs, location);
+        setJobs(filterOnLocation(jobsList, location));
       }
 
       if (fulltime) {
-        filteredJobs = filterFulltimeOnly(filteredJobs);
+        setJobs(filterFulltimeOnly(jobsList));
       }
-
-      setJobs(filteredJobs);
-    }
-
-    if (location) {
-      setJobs(filterOnLocation(jobsList, location));
-    }
-
-    if (fulltime) {
-      setJobs(filterFulltimeOnly(jobsList));
-    }
+      setStatus("resolved");
+    }, 2000);
 
     document.title = "Dev Jobs";
 
-    setStatus("pending");
-    setStatus("resolved");
+    return () => {
+      clearTimeout(jobsDelay);
+      clearTimeout(filterDelay);
+    };
   }, [queries]);
 
   return (
